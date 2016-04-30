@@ -1,6 +1,7 @@
 package com.floatInvoice.fraudDetection;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Result {
@@ -11,7 +12,26 @@ public class Result {
 	private int PaymentMadeOnSaturday;
 	private int PaymentMadeOnSunday;
 	private int EvenAmounts;
-	
+	private List<String> duplicateSSS;
+	private List<String> duplicateSSD;
+
+
+
+	public List<String> getDuplicateSSS() {
+		return duplicateSSS;
+	}
+
+	public void setDuplicateSSS(List<String> duplicateSSS) {
+		this.duplicateSSS = duplicateSSS;
+	}
+
+	public List<String> getDuplicateSSD() {
+		return duplicateSSD;
+	}
+
+	public void setDuplicateSSD(List<String> duplicateSSD) {
+		this.duplicateSSD = duplicateSSD;
+	}
 
 	@Override
 	public String toString() {
@@ -21,7 +41,9 @@ public class Result {
 				+ ", DaysToPaymentExceedThreshold="
 				+ DaysToPaymentExceedThreshold + ", PaymentMadeOnSaturday="
 				+ PaymentMadeOnSaturday + ", PaymentMadeOnSunday="
-				+ PaymentMadeOnSunday + ", EvenAmounts=" + EvenAmounts + "]";
+				+ PaymentMadeOnSunday + ", EvenAmounts=" + EvenAmounts
+				+ ", duplicateSSS=" + duplicateSSS + ", duplicateSSD="
+				+ duplicateSSD + "]";
 	}
 
 	public int getEvenAmounts() {
