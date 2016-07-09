@@ -1,0 +1,137 @@
+
+<head>
+<script>
+        function createChart() {
+            $("#chart").kendoChart({
+                title: {
+                    position: "bottom",
+                    text: "Loan composition across industry"
+                },
+                legend: {
+                    visible: false
+                },
+                chartArea: {
+                    background: ""
+                },
+                seriesDefaults: {
+                    labels: {
+                        visible: true,
+                        background: "transparent",
+                        template: "#= category #: \n #= value#%"
+                    }
+                },
+                series: [{
+                    type: "pie",
+                    startAngle: 150,
+                    data: [{
+                        category: "Dairy products",
+                        value: 53.8,
+                        color: "#9de219"
+                    },{
+                        category: "Beverages",
+                        value: 16.1,
+                        color: "#90cc38"
+                    },{
+                        category: "Other textiles",
+                        value: 11.3,
+                        color: "#068c35"
+                    },{
+                        category: "Articles of fur",
+                        value: 9.6,
+                        color: "#006634"
+                    },{
+                        category: "Paper and paper products",
+                        value: 5.2,
+                        color: "#004d38"
+                    },{
+                        category: "Footwear",
+                        value: 3.6,
+                        color: "#033939"
+                    }]
+                }],
+                tooltip: {
+                    visible: true,
+                    format: "{0}%"
+                }
+            });
+        }
+        $(document).ready(createChart);
+        $(document).bind("kendo:skinChange", createChart);
+    </script>
+</head>
+
+	<style>
+		.homeBoxHeading{
+			color:#00539B;
+			/*border-bottom: 2px solid #20385C*/
+		}
+		.module-home-bullets li{
+			margin:6px 0px 0px 0px;
+		}
+		ul li{
+			list-style: none;
+
+		}
+		.layout-left{
+			float:left;
+		}
+		.layout-pad-1{
+			padding:left;
+		}
+		div{
+			overflow: hidden;
+		}
+	</style>
+	   
+ 
+
+
+ <div class="container" ng-controller="FinDashboardCtrl">
+
+  	<div id="chart" class="row demo-section k-content wide">
+<!-- 	    <div class="demo-section k-content wide">
+ -->	        <!-- <div id="chart" align="left"></div> -->
+<!-- 	    </div>    
+ -->	</div>
+
+  	<div id="row2" class="row">
+  	   <div id="column1" class="col-sm-4">
+          <div><h5 style="border-bottom: 2px solid #20385C;font-weight:bold">Summary</h5>
+          </div>
+          <div>
+		      <ul class="well well-sm module-home-bullets">
+		          <li class="homeBoxHeading">Description <span style="float:right" class="homeBoxHeading"> Totals </span></li>
+		          <li><span>Pending Leads</span> <span style="float:right">10</span></li>
+		          <li><span>Open Bids</span> <span style="float:right">10</span></li>
+		          <li><span>Pending Approvals</span> <span style="float:right">10</span></li>
+		          <li><span>Loans Booked</span> <span style="float:right">10</span></li>
+	          </ul>
+          </div>
+       </div>
+       <div id="column2" class="col-sm-4">
+          <div>
+          	<h5 style="border-bottom: 2px solid #20385C;font-weight:bold">Defaults</h5>
+          </div>
+          <div>
+	          <ul class="well well-sm module-home-bullets">
+		          <li class="homeBoxHeading">Frequency<span style="float:right" class="homeBoxHeading"> Totals </span></li>
+		          <li><span>Current month</span> <span style="float:right">3</span></li>
+		          <li><span>Year to Date</span> <span style="float:right">10</span></li>
+	          </ul>
+          </div>        
+       </div>
+       <div id="column3" class="col-sm-3">        
+          <div><h5 style="border-bottom: 2px solid #20385C;font-weight:bold">Loans</h5>
+          </div>
+          <div>
+	          <ul class="well well-sm module-home-bullets">
+		          <li class="homeBoxHeading">Frequency<span style="float:right" class="homeBoxHeading">Totals</span></li>
+		          <li><span>Current month</span> <span style="float:right">3</span></li>
+		          <li><span>Year to Date</span> <span style="float:right">10</span></li>
+	          </ul>
+          </div>        
+       </div>
+  	</div>
+ </div>
+
+ 

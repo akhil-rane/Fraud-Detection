@@ -1,0 +1,13 @@
+  <div class="row">       
+     <ul class="nav nav-tabs nav-justified" ng-controller="FinResearchCtrl">
+      <li ng-class="rtabClass(tab, 'justified')" ng-repeat="tab in rtabs" tab="tab">
+		<a href="{{tab.link}}" ng-click="rsetSelectedTab(tab, 'justified')">{{tab.label}}
+
+		<!-- <span ng-if="isDropDownMenu(tab.label)" class="caret"></span> -->
+		</a>
+
+	  </li>
+     </ul>
+     <div app-view-segment="1"></div>     
+    </div>
+    <br/> 

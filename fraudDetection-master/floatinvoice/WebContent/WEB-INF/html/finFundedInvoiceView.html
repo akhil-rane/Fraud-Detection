@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+ <body>
+  <div class="container">
+<br/>
+  <table ng-controller="InvoiceLoanViewCtrl" class="table table-striped">
+		<tr>
+		  <th><a href="" ng-click="sortField = 'loanId'">Loan #</th>
+      <th><a href="" ng-click="sortField = 'poolId'">Invoice Pool #</th>
+      <th><a href="" ng-click="sortField = 'smeAcro'">Borrower</th>
+			<th><a href="" ng-click="sortField = 'loanStatus'">Status</th>		
+		</tr>    
+    <tr>
+        <th>
+            <input type="text" ng-model="search.loanId" placeholder="search for loan number" class="input-sm form-control" />
+        </th>
+
+        <th>
+            <input type="text" ng-model="search.poolId" placeholder="search for pool number" class="input-sm form-control"/>
+        </th>
+        <th>
+            <input type="text" ng-model="search.smeAcro" placeholder="search for borrower" class="input-sm form-control"/>
+        </th>
+         <th>
+            <input type="text" ng-model="search.loanStatus" placeholder="search for status" class="input-sm form-control"/>
+        </th>
+         <th>
+           
+        </th>
+    </tr>
+		<tr ng-repeat="item in invoices | filter:search | orderBy:sortField">
+			<td>{{item.loanId}}</td>
+			<td>{{item.poolId}}</td>
+			<td>{{item.smeAcro}}</td>
+			<td>{{item.loanStatus}}</td>
+		</tr>
+	</table>
+  </div>
+ </body>
+</html>

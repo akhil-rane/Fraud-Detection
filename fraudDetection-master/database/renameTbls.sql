@@ -1,0 +1,14 @@
+RENAME TABLE client_login_info to CLIENT_LOGIN_INFO
+RENAME TABLE file_store to FILE_STORE
+RENAME TABLE invoice_financier_candidates to INVOICE_FINANCIER_CANDIDATES
+RENAME TABLE invoice_financier_map to INVOICE_FINANCIER_MAP
+RENAME TABLE invoice_info to INVOICE_INFO
+RENAME TABLE invoice_notification_list to INVOICE_NOTIFICATION_LIST
+RENAME TABLE invoice_pool to INVOICE_POOL
+RENAME TABLE invoice_pool_candidate to INVOICE_POOL_CANDIDATE
+RENAME TABLE invoice_pool_members to INVOICE_POOL_MEMBERS
+RENAME TABLE invoice_pool_queue to INVOICE_POOL_QUEUE
+RENAME TABLE organization_info to ORGANIZATION_INFO
+RENAME TABLE registration_status to REGISTRATION_STATUS
+RENAME TABLE sme_user_info to SME_USER_INFO
+RENAME TABLE user_organization_map to USER_ORGANIZATION_MAP

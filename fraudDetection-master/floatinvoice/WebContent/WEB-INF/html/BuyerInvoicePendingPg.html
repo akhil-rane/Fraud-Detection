@@ -1,0 +1,55 @@
+
+  <table ng-controller="BuyerPendingCtrl" class="table table-striped">
+    <tr>
+      <th><a href="" ng-click="sortField = 'sme'">Supplier Name</td>
+      <th><a href="" ng-click="sortField = 'invoicePONo'">Purchase Order #</td>
+      <th><a href="" ng-click="sortField = 'amount'"> Amount</td>
+      <th><a href="" ng-click="sortField = 'invoiceNo'">Invoice #</th>
+      <th><a href="" ng-click="sortField = 'startDt'">Invoice Date</th>
+      <th><a href="" ng-click="sortField = 'endDt'">Due Date</th>
+      <th><a href="" ng-click="sortField = 'endDt'">Action</th>
+    </tr>
+    <tr>
+         <th>
+            <input type="text" ng-model="search.sme" placeholder="search for supplier" class="input-sm form-control"/>
+        </th>
+         <th>
+            <input type="text" ng-model="search.invoicePONo" placeholder="search for purchase order" class="input-sm form-control"/>
+        </th>        
+        <th>
+            <input type="text" ng-model="search.amount" placeholder="search for amount" class="input-sm form-control"/>
+        </th>
+        <th>
+            <input type="text" ng-model="search.invoiceNo" placeholder="search for invoice number" class="input-sm form-control" />
+        </th>
+        
+         <th>
+            <input type="text" ng-model="search.startDt" placeholder="search for invoice date" class="input-sm form-control" />
+        </th>
+         <th>
+            <input type="text" ng-model="search.endDt" placeholder="search for due date" class="input-sm form-control" />
+        </th>
+        <th/>
+    </tr>
+    <tr dir-paginate="item in invoices | filter:search | orderBy:sortField| itemsPerPage: 10">
+      <td>{{item.sme}}</td>
+      <td>{{item.invoicePONo}}</td>
+      <td>&#x20B9; {{item.amount}}</td>
+      <td>{{item.invoiceNo}}</td>
+      <td>{{item.startDt}}</td>
+      <td>{{item.endDt}}</td>
+      <td colspan="2" >
+      <!-- <button type="button" class="btn btn-primary" ng-click=approveInvoice(item.refId)>Approve</button>
+      <button type="button" class="btn btn-primary" ng-click=rejectInvoice(item.refId)>Reject -->
+      <!-- <a href="" ng-click=approveInvoice(item.refId)><b class="label label-info">Approve</b></a> -->
+      <button type="button" class="btn label label-info" ng-click=approveInvoice(item.refId)>Approve</button>
+      <button type="button" class="btn label label-warning" ng-click=rejectInvoice(item.refId)>Reject</button>
+     <!--  <a href="" ng-click=rejectInvoice(item.refId)><b class="label label-warning">Reject</b></a>
+      -->
+      </td>
+
+    </tr>
+  </table>
+  <div align="center">
+    <dir-pagination-controls/>
+  </div>

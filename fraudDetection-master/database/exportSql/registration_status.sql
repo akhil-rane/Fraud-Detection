@@ -1,0 +1,4 @@
+CREATE TABLE `REGISTRATION_STATUS` (
+  `ID` int(11) NOT NULL,
+  `TEXT` varchar(45) NOT NULL
+)

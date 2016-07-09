@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+ <head>
+   <title>Float Invoice - Accelerate Cashflow</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+   <style>
+    table, th , td  {
+      /*border: 1px solid grey;*/
+      border-collapse: collapse;
+      padding: 10px;
+    }
+    table tr:nth-child(odd) {
+      background-color: #f1f1f1;
+    }
+    table tr:nth-child(even) {
+      background-color: #ffffff;
+    }
+</style>
+    
+ </head>
+ <body>
+ <div class="container">
+<br/>
+
+
+  <table ng-controller="InvoiceFinViewCtrl" class="table table-striped">
+    <tr>
+      <th><a href="" ng-click="sortField = 'invoicePoolNo'">Invoice Pool #</th>
+      <th><a href="" ng-click="sortField = 'totPoolAmt'">Total Pool Amount</th>
+      <th><a href="" ng-click="sortField = 'sme'">Supplier</th>
+      <th><a href="" ng-click="sortField = 'smeCtpy'">Buyer</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+        <th>
+            <input type="text" ng-model="search.invoicePoolNo" placeholder="search for invoice number" class="input-sm form-control" />
+        </th>
+
+        <th>
+            <input type="text" ng-model="search.totPoolAmt" placeholder="search for amount" class="input-sm form-control"/>
+        </th>
+        <th>
+            <input type="text" ng-model="search.sme" placeholder="search for supplier" class="input-sm form-control"/>
+        </th>
+         <th>
+            <input type="text" ng-model="search.smeCtpy" placeholder="search for buyer" class="input-sm form-control"/>
+        </th>
+         <th>
+           
+        </th>
+    </tr>
+    <tr ng-repeat="item in invoices | filter:search | orderBy:sortField">
+      <td><a ng-href="/floatinvoice/invoice/{{item.poolRefId}}">{{item.invoicePoolNo}}</a></td>
+      <td>{{item.totPoolAmt}}</td>
+      <td>{{item.sme}}</td>
+      <td>{{item.smeCtpy}}</td>
+      <td>
+
+<section layout-lg="row" flex="" ng-controller="RightCtrlListView" >
+<!--     <md-content flex="" layout-padding="">
+ --><!--       <div layout="column" layout-fill="" layout-align="top center">   
+ -->    <div>
+          <!-- <md-button ng-click="toggleRight()" ng-hide="isOpenRight()" class="md-primary">
+            Get Paid
+          </md-button> -->
+          <button type="button" class="btn btn-primary" ng-click="toggleRight(item, 'right')" ng-hide="isOpenRight()">Bid Now</button>
+        </div>
+<!--       </div>
+ -->      <div flex=""></div>
+<!--     </md-content>
+ -->  <md-sidenav class="md-sidenav-right md-whiteframe-z4" md-component-id="right" ng-model="showIdListView">
+        <md-toolbar class="md-theme-light">
+          <h1 class="md-toolbar-tools">Make an offer..</h1>
+        </md-toolbar>
+        <md-content  layout-padding="">
+          <form name="userForm" ng-submit="submitForm()" novalidate ng-show="showIdListView">
+           <!--  <md-input-container class="md-block" flex-gt-sm>
+              <label>Bank Name</label>
+              <input type="text" name="loanPeriod" ng-model="user.loanPeriod"/>         
+            </md-input-container> -->
+            <br/>
+            <div layout-gt-xs="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>Loan Period</label>
+                  <md-select ng-model="user.loanPeriod">
+                    <md-option value="3">3 months</md-option>
+                    <md-option value="4">4 months</md-option>
+                    <md-option value="5">5 months</md-option>
+                    <md-option value="6">6 months</md-option>
+                  </md-select>                        
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>Interest Rate Per Month</label>
+                  <md-select ng-model="user.interestRate">
+                    <md-option value="1.5">1.5 %</md-option>
+                    <md-option value="2.0">2.0 %</md-option>
+                    <md-option value="2.5">2.5 %</md-option>
+                    <md-option value="3.0">3 %</md-option>
+                  </md-select>       
+                </md-input-container>
+            </div>
+            <!-- <md-input-container class="md-block" flex-gt-sm>
+              <label>Bank Account Number</label>
+              <input type="text" name="bankAcctNo" ng-model="user.bankAcctNo">
+            </md-input-container>   -->            
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Haircut</label>
+              <md-select ng-model="user.hairCut">
+                <md-option value="5">5 %</md-option>
+                <md-option value="10">10 %</md-option>
+                <md-option value="15">15 %</md-option>
+                <md-option value="20">20 %</md-option>
+              </md-select>
+            </md-input-container>
+             <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+             <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Submit</button>
+             <button type="button" class="btn btn-primary" ng-click="close()">Close</button>
+          </form>
+          <div ng-hide="showIdListView">
+
+            <p> Thank you, account saved successfully.</p>
+            <div layout-gt-xs="row">
+
+            <button type="button" class="btn btn-primary" ng-click="close()">Close</button>
+
+            </div>
+          </div>
+     
+        </md-content>
+      </md-sidenav>
+      </section>
+        <!-- <button type="button" class="btn btn-primary" ng-click=bidNow(item.poolRefId)>Bid Now
+</button> -->
+</td>
+    </tr>
+  </table>
+  </div>
+ </body>
+</html>

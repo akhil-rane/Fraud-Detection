@@ -1,0 +1,273 @@
+ 
+ <div class="container" >
+	
+	<div style="margin-top: 1em;">	
+		<div id="row1" class="row">
+		   <div class="col-sm-4">
+		   		
+	            <label>Borrower: </label>
+	            <input id="color" value="1" style="width: 60%;" />
+	           
+           </div>
+           <div class="col-sm-4" >
+	            <label>Industry: </label>
+	            <select id="industry" style="width: 60%;" >
+	            	<option value="0"></option> 
+	                <option value="1">Manufacturing</option>  
+	                <option value="2">Agriculture</option>
+	                <option value="3">Forestry</option>  
+	                <option value="4">Fishing</option> 
+	            </select>
+           </div>
+            <div class="col-sm-4">
+	            <label>Loan Type: </label>
+	            <select id="loanType" style="width: 60%;" >
+	            	<option value="0"></option> 
+	                <option value="1">Type 1</option>    
+	               	<option value="2">Type 2</option> 
+	                <option value="3">Type 3</option>  
+	                <option value="4">Type 4</option>  
+	            </select>
+            </div>
+
+        </div>
+        <div id="row2" class="row" style="margin-top: 1.5em;">
+        	<div class="col-sm-4" >
+	            <label>Location: </label>
+	            <select id="location" style="width: 60%;" >
+	            	<option value="0"></option>    
+	                <option value="1">Chennai</option>    
+	                <option value="2">Mumbai</option> 
+	            </select>
+           </div>
+           <div class="col-sm-4">
+	            <label>Rating: </label>
+	            <select id="size" style="width: 60%;" >
+	            	<option value="0"></option> 
+	                <option value="1">Excellent</option>    
+	                <option value="2">Good</option> 
+	                <option value="3">Fair</option> 
+	                <option value="4">Poor</option>   
+	            </select>
+            </div>
+       <!--      <div class="col-sm-4">
+	            <label>Prospect List: </label>
+	            <select id="prospectList" style="width: 60%;" >
+	            	<option value="0"></option> 	
+                	<option value="1">List 1</option>    
+	               	<option value="2">List 2</option> 
+	                <option value="3">List 3</option>  
+	                <option value="4">List 4</option>               
+	            </select>
+            </div> -->
+             
+      	</div>
+      	<div id="row3" class="row">
+      		<div style="margin-top: 1em;float:right">
+            	<button style="margin-right: 1em;" type="button" class="btn btn-primary">Search</button>
+            
+            	<button  type="button" class="btn btn-primary">Save to Excel</button>
+            </div>
+      	</div>
+      	<div id="row4" class="row" style="margin-top: 1em;">
+      		<table class="table table-striped col-sm-12">
+
+			
+
+		    <tr>
+			  <th><a href="" ng-click="sortField = 'invoiceNo'">Borrower</th>
+		      <th><a href="" ng-click="sortField = 'smeCtpy'">Industry</th>
+		      <th><a href="" ng-click="sortField = 'amount'">Location</th>
+		      <th><a href="" ng-click="sortField = 'financier'">Rating</th>   
+		      <th><a href="" ng-click="sortField = 'financier'">Action</th> 
+		    </tr>
+		    <tr>
+		        <th>
+		            <input type="text" ng-model="search.loanId" placeholder="search for borrower" class="input-sm form-control" />
+		        </th>
+
+		        <th>
+		            <input type="text" ng-model="search.poolId" placeholder="search for industry" class="input-sm form-control"/>
+		        </th>
+		        <th>
+		            <input type="text" ng-model="search.smeAcro" placeholder="search for location" class="input-sm form-control"/>
+		        </th>
+		         <th>
+		            <input type="text" ng-model="search.loanStatus" placeholder="search for rating" class="input-sm form-control"/>
+		        </th>
+		         <th>
+		           
+		        </th>
+		    </tr>
+		    <tr>
+		      <td>RELPUMPS</td>
+		      <td>Manufacturing</td>
+		      <td>Chennai</td>
+		      <td>Excellent</td>
+		      <td><button  type="button" class="btn btn-primary">Add to List</button></td>
+		    </tr>
+		    <tr>
+		      <td>RELPUMPS</td>
+		      <td>Manufacturing</td>
+		      <td>Mumbai</td>
+		      <td>Good</td>
+		      <td><button  type="button" class="btn btn-primary">Add to List</button></td>
+		    </tr>
+		    <tr>
+		      <td>RELACRO</td>
+		      <td>Manufacturing</td>
+		      <td>Chennai</td>
+		      <td>Good</td>
+		      <td><button  type="button" class="btn btn-primary">Add to List</button></td>
+		    </tr>
+		    <tr>
+		      <td>TESTACRO</td>
+		      <td>Agriculture</td>
+		      <td>Delhi</td>
+		      <td>Good</td>
+		      <td><button  type="button" class="btn btn-primary">Add to List</button></td>
+		    </tr>
+		    <tr>
+		      <td>TESTACRO</td>
+		      <td>Agriculture</td>
+		      <td>Chennai</td>
+		      <td>Fair</td>
+		      <td><button  type="button" class="btn btn-primary">Add to List</button></td>
+		    </tr>
+		    <!-- <tr>
+		       <th>
+		            <input type="text" ng-model="search.invoiceNo" placeholder="search for invoice number" class="input-sm form-control" />
+		        </th>
+		        <th>
+		            <input type="text" ng-model="search.smeCtpy" placeholder="search for buyer" class="input-sm form-control"/>
+		        </th>
+		        <th>
+		            <input type="text" ng-model="search.amount" placeholder="search for amount" class="input-sm form-control"/>
+		        </th>      
+		   
+		         <th>
+		            <input type="text" ng-model="search.financier" placeholder="search for financier" class="input-sm form-control" />
+		        </th>
+		    </tr> -->
+    <!-- <tr dir-paginate="item in invoices | filter:search | orderBy:sortField| itemsPerPage: 10">
+      <td><a ng-href="/floatinvoice/invoice/{{item.poolRefId}}">{{item.invoicePoolNo}}</a></td>
+      <td>{{item.smeCtpy}}</td>
+      <td>&#x20B9; {{item.totPoolAmt}}</td>      
+      <td>{{item.financier}}</td>
+    </tr> -->
+  			</table>
+      	</div>
+        <style>
+        
+            .black-cap {
+                background-position: 0 0;
+            }
+            .grey-cap {
+                background-position: 0 -225px;
+            }
+            .orange-cap {
+                background-position: 0 -450px;
+            }
+        </style>
+            <script>
+                $(document).ready(function() {
+                    var data = [
+                    	{ text: "", value: "0" },
+                        { text: "RELPUMPS", value: "1" },
+                        { text: "TESTACRO", value: "2" },
+                        { text: "MMSEEDS", value: "3" }
+                    ];
+
+                    // create DropDownList from input HTML element
+                    $("#color").kendoDropDownList({
+                        dataTextField: "text",
+                        dataValueField: "value",
+                        dataSource: data,
+                        index: 0,
+                        change: onChange
+                    });
+					// create DropDownList from select HTML element
+                    $("#size").kendoDropDownList();
+					$("#loanType").kendoDropDownList();
+					$("#prospectList").kendoDropDownList();
+					$("#location").kendoDropDownList();
+					$("#industry").kendoDropDownList();
+                    var color = $("#color").data("kendoDropDownList");
+					color.select(0);
+                    var size = $("#size").data("kendoDropDownList");
+					function onChange() {
+                        var value = $("#color").val();
+                        $("#cap")
+                            .toggleClass("RELPUMPS", value == 1)
+                            .toggleClass("TESTACRO", value == 2)
+                            .toggleClass("MMSEEDS", value == 3);
+                    };
+                  
+                });
+            </script>
+        
+		<!-- <div class="row"> 
+			<div class="col-sm-3">
+		        <md-input-container class="md-block" flex-sm>
+		          <label>Borrower</label>
+		          <md-select ng-model="search.borrower">
+		           <md-option ng-repeat="borrower in borrowers" value="{{borrower.abbrev}}">
+		              {{borrower.abbrev}}
+		            </md-option>
+		          </md-select>
+		        </md-input-container>
+			</div>
+		    <div class="col-sm-3">		        
+		        <md-input-container class="md-block" flex-sm>
+		         <label>Industry Name</label>
+		         <md-select ng-model="search.industry">
+		          <md-option ng-repeat="industry in industries" value="{{industry.abbrev}}">
+		              {{industry.abbrev}}
+		          </md-option>
+		         </md-select>
+		        </md-input-container>
+		    </div>
+		    <div class="col-sm-3">
+				<md-input-container class="md-block" flex-sm>
+	               <label>Geography</label>
+	               <input type="text" name="geography" ng-model="search.geography">
+	            </md-input-container>	            	            
+			</div>
+		</div>
+		<div class="row"> 
+			<div class="col-sm-3">
+		        <md-input-container class="md-block" flex-sm>
+		         <label>Rating</label>
+		         <md-select ng-model="search.rating">
+		          <md-option ng-repeat="rating in ratings" value="{{rating.abbrev}}">
+		              {{rating.abbrev}}
+		          </md-option>
+		         </md-select>
+		        </md-input-container>	
+		    </div>
+		    <div class="col-sm-3">
+		        <md-input-container class="md-block" flex-sm>
+		         <label>Loan Type</label>
+		         <md-select ng-model="search.loanType">
+		          <md-option ng-repeat="loanType in loanTypes" value="{{loanType.abbrev}}">
+		              {{loanType.abbrev}}
+		          </md-option>
+		         </md-select>
+		        </md-input-container>
+		    </div>
+		    <div class="col-sm-3">
+		        <md-input-container class="md-block" flex-sm>
+		         <label>Prospect List</label>
+		         <md-select ng-model="search.listName">
+		          <md-option ng-repeat="listName in listNames" value="{{listName.abbrev}}">
+		              {{listName.abbrev}}
+		          </md-option>
+		         </md-select>
+		        </md-input-container>	
+			</div>
+		</div> -->
+		
+	</div>
+
+	
+ </div>
