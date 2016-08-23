@@ -1,0 +1,34 @@
+
+  <table ng-controller="PendingCtrl" class="table table-striped">
+    <tr>
+<th><a href="" ng-click="sortField = 'invoiceNo'">Invoice Pool #</th>
+      <th><a href="" ng-click="sortField = 'smeCtpy'">Buyer Name</td>
+      <th><a href="" ng-click="sortField = 'amount'">Pool Amount</td>
+      
+      <th><a href="" ng-click="sortField = 'financier'">Financier</th>    
+    </tr>
+    <tr>
+         <th>
+            <input type="text" ng-model="search.invoiceNo" placeholder="search for invoice number" class="input-sm form-control" />
+        </th>
+        <th>
+            <input type="text" ng-model="search.smeCtpy" placeholder="search for buyer" class="input-sm form-control"/>
+        </th>
+        <th>
+            <input type="text" ng-model="search.amount" placeholder="search for amount" class="input-sm form-control"/>
+        </th>      
+   
+         <th>
+            <input type="text" ng-model="search.financier" placeholder="search for financier" class="input-sm form-control" />
+        </th>
+    </tr>
+    <tr dir-paginate="item in invoices | filter:search | orderBy:sortField| itemsPerPage: 10">
+      <td><a ng-href="/floatinvoice/invoice/{{item.poolRefId}}">{{item.invoicePoolNo}}</a></td>
+      <td>{{item.smeCtpy}}</td>
+      <td>&#x20B9; {{item.totPoolAmt}}</td>      
+      <td>{{item.financier}}</td>
+    </tr>
+  </table>
+  <div align="center">
+    <dir-pagination-controls/>
+  </div>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+ <head>
+   <title>Float Invoice - Accelerate Cashflow</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+   <style>
+    table, th , td  {
+      /*border: 1px solid grey;*/
+      border-collapse: collapse;
+      padding: 10px;
+    }
+    table tr:nth-child(odd) {
+      background-color: #f1f1f1;
+    }
+    table tr:nth-child(even) {
+      background-color: #ffffff;
+    }
+</style>
+    
+ </head>
+ <body>
+ <div class="container">
+<br/>
+
+
+  <table ng-controller="FinApprovalViewCtrl" class="table table-striped">
+    <tr>
+      <th><a href="" ng-click="sortField = 'invoicePoolNo'">Invoice Pool #</th>
+      <th><a href="" ng-click="sortField = 'totPoolAmt'">Total Pool Amount</th>
+      <th><a href="" ng-click="sortField = 'sme'">Supplier</th>
+      <th><a href="" ng-click="sortField = 'smeCtpy'">Buyer</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+        <th>
+            <input type="text" ng-model="search.invoicePoolNo" placeholder="search for invoice number" class="input-sm form-control" />
+        </th>
+
+        <th>
+            <input type="text" ng-model="search.totPoolAmt" placeholder="search for amount" class="input-sm form-control"/>
+        </th>
+        <th>
+            <input type="text" ng-model="search.sme" placeholder="search for supplier" class="input-sm form-control"/>
+        </th>
+         <th>
+            <input type="text" ng-model="search.smeCtpy" placeholder="search for buyer" class="input-sm form-control"/>
+        </th>
+         <th>
+           
+        </th>
+    </tr>
+    <tr ng-repeat="item in invoices | filter:search | orderBy:sortField">
+      <td><a ng-href="/floatinvoice/invoice/{{item.poolRefId}}">{{item.invoicePoolNo}}</a></td>
+      <td>{{item.totPoolAmt}}</td>
+      <td>{{item.sme}}</td>
+      <td>{{item.smeCtpy}}</td>
+      <td>
+
+<section layout-lg="row" flex="" ng-controller="RightCtrl">
+<!--     <md-content flex="" layout-padding="">
+ --><!--       <div layout="column" layout-fill="" layout-align="top center">   
+ -->    <div>
+          <!-- <md-button ng-click="toggleRight()" ng-hide="isOpenRight()" class="md-primary">
+            Get Paid
+          </md-button> -->
+          <button type="button" class="btn btn-primary" ng-click="toggleRight(item, 'right')" ng-hide="isOpenRight()">Approve</button>
+        </div>
+<!--       </div>
+ -->      <div flex=""></div>
+<!--     </md-content>
+ -->  <md-sidenav class="md-sidenav-right md-whiteframe-z4" md-component-id="right" ng-model="showId">
+        <md-toolbar class="md-theme-light">
+          <h1 class="md-toolbar-tools">Approve the loan...</h1>
+        </md-toolbar>
+        <md-content  layout-padding="">
+          <form name="userForm" ng-submit="submitForm()" novalidate ng-show="showId">
+       
+            <div layout-xl="row">
+             <p class="md-subhead">Net Loan Amount : &#x20B9; {{item.loanAmtOffer}}</p>
+            </div>
+            <div layout-xl="row">
+             <p class="md-subhead">Interest Rate : {{item.interestRate}} %</p>
+            </div>
+            <div layout-xl="row">
+              <p>
+             <md-datepicker id="user.loanDispatchDt" ng-model="user.loanDispatchDt"  md-placeholder=" Dispatch date" md-min-date="minDate" md-max-date="maxDate" formatDate="yyyy-MM-dd"></md-datepicker>
+              </p>
+             </div>
+
+            <div layout-xl="row">
+              <p>
+              <md-datepicker id="user.loanCloseDt" ng-model="user.loanCloseDt"  md-placeholder="Close date" md-min-date="minDate" md-max-date="maxDate" formatDate="yyyy-MM-dd"></md-datepicker>
+              </p>
+
+            </div>
+             <div layout-gt="row">
+
+             <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Transfer Money</button>
+             <button type="button" class="btn btn-primary" ng-click="close()">Close</button>
+             </div>
+          </form>
+ <!--          <div ng-hide="showId">
+
+            <p> Thank you, account saved successfully.</p>
+            <div layout-gt-xs="row">
+
+            <button type="button" class="btn btn-primary" ng-click="close()">Close</button>
+
+            </div>
+          </div> -->
+     
+        </md-content>
+      </md-sidenav>
+      </section>
+        <!-- <button type="button" class="btn btn-primary" ng-click=bidNow(item.poolRefId)>Bid Now
+</button> -->
+</td>
+    </tr>
+  </table>
+  </div>
+ </body>
+</html>

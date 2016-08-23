@@ -1,0 +1,104 @@
+<div ng-controller="PaymentCtrl">
+  <table class="table table-striped">
+    <tr>
+      <th></th>
+      <th><a href="" ng-click="sortField = 'loanId'">Loan #</td>
+      <th><a href="" ng-click="sortField = 'loanAmt'">Loan Amount</td>
+      <th><a href="" ng-click="sortField = 'interestRate'">Interest Rate</th>
+      <th><a href="" ng-click="sortField = 'financierAcro'">Financier</td>
+    </tr>
+    <tr ng-repeat-start="loan in loans | filter:search | orderBy:sortField" >
+      <td>
+              <button ng-if="loan.expanded" ng-click="loan.expanded = false">-</button>
+              <button ng-if="!loan.expanded" ng-click="loan.expanded = true">+</button>
+      </td>
+      <td>{{loan.loanId}}</td>
+      <td>&#x20B9; {{loan.loanAmt}}</td>
+      <td>{{loan.interestRate}}%</td>
+      <td>{{loan.financierAcro}}</td>  
+    </tr>
+    <tr ng-if="loan.expanded" ng-repeat-end="">
+			<td></td>
+    		<td colspan="4">
+    			<table class="table table-striped">
+    			 <tr>
+    			    <th>Installment #</th>
+    			 	<th>Due Date</th>
+    			 	<th>Amount Due</th>
+    			 	<th>Fees</th>
+    			 	<th></th>
+    			 </tr>
+    			 <tr ng-repeat="emi in loan.emis" ng-controller="EMIPaymentCtrl">
+    			 	<td >{{$index + 1}} </td>
+    			 	<td >{{emi.paymentDueDt}}</td>
+    			 	<td >&#x20B9;{{emi.amt}}</td>  
+    			 	<td >&#x20B9;{{emi.fees}}</td>
+    			 	<!-- <td ng-if="$index == '0'"> -->	
+    			 	<td ng-if="emi.status == 'QUEUED'">	
+    			 		<p>Paid</p> 
+    			 	</td>	
+    			 	<td ng-if="emi.payNow == true">	      		
+						<section layout-lg="row" flex="" >
+					        <div>
+					          <button type="button" class="btn btn-primary" ng-click="toggleRight(item.refId, 'right')" ng-hide="isOpenRight()">Pay Now</button>
+					        </div>
+					        <div flex=""></div>
+						  <md-sidenav class="md-sidenav-right md-whiteframe-z4" md-component-id="right">
+					        <md-toolbar class="md-theme-light">
+					          <h1 class="md-toolbar-tools">Initiate Transfer...</h1>
+					        </md-toolbar>
+					        <md-content  layout-padding="">
+					        <br/>
+					        <div layout-xl="row">
+					          <p class="md-subhead">Amount : &#x20B9; {{emi.amt}}</p>
+					        </div>
+					        <div layout-xl="row">
+					          <p class="md-subhead">Fees : &#x20B9; {{emi.fees}}</p>
+					        </div>
+					        <div layout-xl="row">
+					          <p class="md-subhead">Payment Date : </p>
+					        </div>
+					        <div layout-xl="row">
+					          <button type="button" class="btn btn-primary" ng-click="submitForm(emi, loan.financierAcro, loan.loanRefId)">Confirm</button>
+					          <button type="button" class="btn btn-primary" ng-click="close()">Close</button>
+					        </div>     
+					        </md-content>
+					      </md-sidenav>
+					      </section>
+				 	</td> 
+			    	
+			   		<td ng-if="emi.payNow == false && emi.status == 'UNPAID'">
+			      		<section layout-lg="row" flex="" >
+					        <div>
+					          <button type="button" class="btn btn-primary" ng-click="toggleRight(item.refId, 'right')" ng-hide="isOpenRight()">Pay Later</button>
+					        </div>
+					        <div flex=""></div>
+						  <md-sidenav class="md-sidenav-right md-whiteframe-z4" md-component-id="right">
+					        <md-toolbar class="md-theme-light">
+					          <h1 class="md-toolbar-tools">Initiate Transfer...</h1>
+					        </md-toolbar>
+					        <md-content  layout-padding="">
+					        <br/>
+					        <div layout-xl="row">
+					          <p class="md-subhead">Amount : &#x20B9; {{emi.amt}}</p>
+					        </div>
+					        <div layout-xl="row">
+					          <p class="md-subhead">Fees : &#x20B9; {{emi.fees}}</p>
+					        </div>
+					        <div layout-xl="row">
+					          <p class="md-subhead">Payment Date : </p>
+					        </div>
+					        <div layout-xl="row">
+					          <button type="button" class="btn btn-primary" ng-click="submitForm(emi, loan.financierAcro, loan.loanRefId)">Confirm</button>
+					          <button type="button" class="btn btn-primary" ng-click="close()">Close</button>
+					        </div>     
+					        </md-content>
+					      </md-sidenav>
+					      </section>
+			    	</td>    			 	
+    			  </tr>
+    			 </table>
+    		</td>
+    </tr>
+  </table>
+ </div>

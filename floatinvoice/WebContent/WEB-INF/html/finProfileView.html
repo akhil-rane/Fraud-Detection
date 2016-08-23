@@ -1,0 +1,23 @@
+ <style>
+    table, th , td  {
+      /*border: 1px solid grey;*/
+      border-collapse: collapse;
+      padding: 10px;
+    }
+    table tr:nth-child(odd) {
+      background-color: #f1f1f1;
+    }
+    table tr:nth-child(even) {
+      background-color: #ffffff;
+    }
+</style>
+
+
+    
+    <div class="row">       
+        <ul class="nav nav-tabs nav-justified" ng-controller="FinProfileTabsCtrl">
+          <li ng-class="tabClass(tab, 'justified')" ng-repeat="tab in tabs" tab="tab"><a href="{{tab.link}}" ng-click="setSelectedTab(tab, 'justified')">{{tab.label}}</a></li>
+        </ul>
+        <div app-view-segment="1"></div>     
+    </div>
+    <br/> 

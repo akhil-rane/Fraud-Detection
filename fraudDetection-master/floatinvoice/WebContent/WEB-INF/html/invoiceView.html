@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="floatInvoiceListApp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Float Invoice</title>
+  <script src="../js/angular.min.js"></script>
+    <script src="../js/angular-route.min.js"></script>
+
+  <script>
+    var floatInvoiceListApp = angular.module('floatInvoiceListApp',['ngRoute']);
+
+    floatInvoiceListApp.config(function($routeProvider){
+      $routeProvider.when('/',{
+        templateUrl:
+        controller:
+      })
+
+    });
+
+
+    floatInvoiceListApp.controller('InvoiceCtrl',function ($scope, $http){
+
+    	$http.get().success(function(data){
+
+    		$scope.invoiceGrid = data;
+
+    	});
+
+    });
+
+  </script>
+</head>
+<body ng-controller="InvoiceCtrl">
+
+	<table>
+		<tr></tr>
+		<tr ng-repeat="item in invoices">
+			<td>{{item.}}</td>
+			<td>{{item.}}</td>
+			<td>{{item.}}</td>
+			<td>{{item.}}</td>
+		</tr>
+	</table>
+
+
+</body>
+</html>

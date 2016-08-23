@@ -1,0 +1,11 @@
+use ficore;
+source client_login_info.sql;
+source organization_info.sql;
+source sme_user_info.sql;
+source registration_status.sql;
+source file_store.sql;
+source invoice_info.sql;
+source invoice_notification_list.sql;
+source invoice_financier_candidates.sql
+source invoice_financier_map.sql
+source user_organization_map.sql

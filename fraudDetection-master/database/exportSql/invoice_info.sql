@@ -1,0 +1,21 @@
+CREATE TABLE `INVOICE_INFO` (
+  `invoice_start_dt` date NOT NULL,
+  `invoice_end_dt` date NOT NULL,
+  `amount` decimal(8,2) NOT NULL,
+  `invoice_id` int(11) NOT NULL AUTO_INCREMENT,
+  `invoice_no` varchar(45) NOT NULL,
+  `company_id` int(11) NOT NULL,
+  `file_id` int(11) NOT NULL,
+  `buyer_name` varchar(45) NOT NULL,
+  `buyer_id` int(11) DEFAULT NULL,
+  `buyer_approval` char(1) NOT NULL DEFAULT 'N',
+  `insert_dt` datetime DEFAULT NULL,
+  `description` varchar(45) NOT NULL,
+  `ref_id` varchar(45) NOT NULL,
+  `request_id` varchar(45) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `source_app` int(11) NOT NULL,
+  PRIMARY KEY (`invoice_id`),
+  KEY `fk_file_id_idx` (`file_id`),
+  CONSTRAINT `fk_file_id` FOREIGN KEY (`file_id`) REFERENCES `FILE_STORE` (`FILE_ID`) ON DELETE CASCADE ON UPDATE CASCADE
+)
