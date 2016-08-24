@@ -32,5 +32,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/akhil_rane/Downloads/org.apache.poi.xwpf.converter.pdf-1.0.6.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

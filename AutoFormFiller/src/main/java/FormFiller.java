@@ -1,13 +1,14 @@
+import java.io.File;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.List;
-
-import javax.swing.text.Document;
 
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.apache.poi.xwpf.converter.pdf.PdfConverter;
 
 public class FormFiller {
 	
@@ -34,28 +35,30 @@ public class FormFiller {
 	                        text = text.replace("%name%", formData.get("%name%"));
 	                        r.setText(text, 0);
 	                    }
-//	                    else if (text != null && text.contains("%address%")) {
-//	                        text = text.replace("%address%", formData.get("%address%"));
-//	                        r.setText(text, 0);
-//	                    }
-//	                    else if (text != null && text.contains("%loan_amount%")) {
-//	                        text = text.replace("%loan_amount%", formData.get("%loan_amount%"));
-//	                        r.setText(text, 0);
-//	                    }
-//	                    else if (text != null && text.contains("%invoice_date%")) {
-//	                        text = text.replace("%invoice_date%", formData.get("%invoice_date%"));
-//	                        r.setText(text, 0);
-//	                    }
-//	                    else if (text != null && text.contains("%payment_date%")) {
-//	                        text = text.replace("%payment_date%", formData.get("%payment_date%"));
-//	                        r.setText(text, 0);
-//	                    }
+	                    else if (text != null && text.contains("%address%")) {
+	                        text = text.replace("%address%", formData.get("%address%"));
+	                        r.setText(text, 0);
+	                    }
+	                    else if (text != null && text.contains("%loan_amount%")) {
+	                        text = text.replace("%loan_amount%", formData.get("%loan_amount%"));
+	                        r.setText(text, 0);
+	                    }
+	                    else if (text != null && text.contains("%invoice_date%")) {
+	                        text = text.replace("%invoice_date%", formData.get("%invoice_date%"));
+	                        r.setText(text, 0);
+	                    }
+	                    else if (text != null && text.contains("%payment_date%")) {
+	                        text = text.replace("%payment_date%", formData.get("%payment_date%"));
+	                        r.setText(text, 0);
+	                    }
 	                }
 	            }
-	        }
-
-	        doc.write(new FileOutputStream(output_path));	               
+	        }	                   
 	        
+	        OutputStream out=new FileOutputStream(new File(output_path));
+	     
+	        PdfConverter.getInstance().convert(doc,out,null);
+	       
 	        System.out.println("PDF Form created...");	    
 	        
 	        doc.close();
